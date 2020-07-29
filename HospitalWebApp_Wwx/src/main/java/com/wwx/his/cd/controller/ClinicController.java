@@ -22,7 +22,7 @@ public class ClinicController {
 		cs.add(cm);
 		Result<String> result=new Result<String>();
 		result.setStatus("OK");
-		result.setMessage("增加科室医生成功!");
+		result.setMessage("增加科室成功!");
 		return result;
 	}
 	@PostMapping(value="/modify")
@@ -56,9 +56,9 @@ public class ClinicController {
 		return result;
 	}
 	@GetMapping(value="/get")
-	public Result<ClinicModel> getByNo(@RequestParam(required=true) int no) throws Exception{
+	public Result<ClinicModel> getByCid(@RequestParam(required=true) int cid) throws Exception{
 		Result<ClinicModel> result=new Result<ClinicModel>();
-		result.setResult(cs.getByCid(no));
+		result.setResult(cs.getByCid(cid));
 		
 		result.setStatus("OK");
 		result.setMessage("取得指定科室对象成功!");

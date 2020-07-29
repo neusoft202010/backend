@@ -56,9 +56,9 @@ public class DoctorController {
 		return result;
 	}
 	@GetMapping(value="/get")
-	public Result<DoctorModel> getByNo(@RequestParam(required=true) int no) throws Exception{
+	public Result<DoctorModel> getByDid(@RequestParam(required=true) int Did) throws Exception{
 		Result<DoctorModel> result=new Result<DoctorModel>();
-		result.setResult(ds.getByDid(no));
+		result.setResult(ds.getByDid(Did));
 		
 		result.setStatus("OK");
 		result.setMessage("取得指定医生对象成功!");

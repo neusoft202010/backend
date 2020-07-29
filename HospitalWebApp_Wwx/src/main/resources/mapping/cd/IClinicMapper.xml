@@ -9,7 +9,7 @@
 		<result property="name" column="NAME"/>
 	</resultMap>
  
-	<insert id="insert" parameterType="Clinic" keyProperty="no"   keyColumn="CID"  useGeneratedKeys="true">
+	<insert id="insert" parameterType="Clinic" keyProperty="cid" keyColumn="CID"  useGeneratedKeys="true">
 	insert into oa_clinic (NAME) values (#{name})
  	</insert>
   
@@ -33,7 +33,7 @@
  	select count(*)  from oa_clinic
  	</select>
  
- 	<select id="selectByDid"  resultMap="DoctorResultMap">
+ 	<select id="selectByCid"  resultMap="ClinicResultMap">
  	select * from oa_clinic where CID=#{cid}
  	</select>
   

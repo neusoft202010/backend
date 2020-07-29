@@ -11,7 +11,7 @@
 		<result property="phone" column="PHONE"/>
 	</resultMap>
  
-	<insert id="insert" parameterType="Admin" keyProperty="no"   keyColumn="DID"  useGeneratedKeys="true">
+	<insert id="insert" parameterType="Admin" keyProperty="id"   keyColumn="DID"  useGeneratedKeys="true">
 	insert into oa_admin (NAME,PASSWORD,PHONE) values (#{name},#{password},#{phone})
  	</insert>
   

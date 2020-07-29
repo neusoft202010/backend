@@ -34,9 +34,9 @@ public class AdminController {
 		return result;
 	}
 	@GetMapping(value="/get")
-	public Result<AdminModel> getById(@RequestParam(required=true) int no) throws Exception{
+	public Result<AdminModel> getById(@RequestParam(required=true) int id) throws Exception{
 		Result<AdminModel> result=new Result<AdminModel>();
-		result.setResult(as.getById(no));
+		result.setResult(as.getById(id));
 		result.setStatus("OK");
 		result.setMessage("取得指定管理员对象成功!");
 		return result;

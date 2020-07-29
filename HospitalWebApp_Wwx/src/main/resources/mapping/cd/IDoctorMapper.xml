@@ -13,7 +13,7 @@
 		<result property="phone" column="PHONE"/>
 	</resultMap>
  
-	<insert id="insert" parameterType="Doctor" keyProperty="no"   keyColumn="DID"  useGeneratedKeys="true">
+	<insert id="insert" parameterType="Doctor" keyProperty="did"   keyColumn="DID"  useGeneratedKeys="true">
 	insert into oa_doctor (CID,NAME,SEX,AGE,PHONE) values (#{cid},#{name},#{sex},#{age},#{phone})
  	</insert>
   
