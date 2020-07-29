@@ -23,5 +23,5 @@ public interface IDoctorMapper {
 	//取得医生的个数
 	public int selectCountByAll() throws Exception;
 	//根据医生的did（PK）取得指定的医生对象
-	public DoctorModel selectByDid(int didno) throws Exception;
+	public DoctorModel selectByDid(int didn) throws Exception;
 }

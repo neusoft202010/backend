@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.wwx.his.admin.mapper.IDoctorMapper">
+
+	<resultMap id="DoctorResultMap" type="Doctor" >
+		<id property="did" column="DID"/>
+		<result property="cid" column="CID"/>
+		<result property="name" column="NAME"/>
+		<result property="sex" column="SEX"/>
+		<result property="age" column="AGE"/>
+		<result property="phone" column="PHONE"/>
+	</resultMap>
+ 
+	<insert id="insert" parameterType="Doctor" keyProperty="no"   keyColumn="DID"  useGeneratedKeys="true">
+	insert into oa_doctor (CID,NAME,SEX,AGE,PHONE) values (#{cid},#{name},#{sex},#{age},#{phone})
+ 	</insert>
+  
+ 	<update id="update">
+ 	update oa_doctor set CID=#{cid},NAME=#{name},SEX=#{sex},AGE=#{age},PHONE=#{phone} where DID=#{did}
+ 	</update>
+  
+	<delete id="delete">
+ 	delete from oa_doctor  where DID=#{did} 
+ 	</delete>
+  
+ 	<select id="selectByAll"  resultMap="DoctorResultMap">
+ 	select *  from oa_doctor
+ 	</select>
+ 	
+ 	<select id="selectByAllWithPage" resultMap="DoctorResultMap">
+ 	select *  from oa_doctor limit #{start},#{rows}
+ 	</select>
+ 	
+ 	<select id="selectCountByAll" resultType="_int">
+ 	select count(*)  from oa_doctor
+ 	</select>
+ 
+ 	<select id="selectByDid"  resultMap="DoctorResultMap">
+ 	select * from oa_doctor where DID=#{did}
+ 	</select>
+  
+</mapper>

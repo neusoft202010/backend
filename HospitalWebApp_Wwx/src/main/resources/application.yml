@@ -11,7 +11,7 @@ spring:
  
 mybatis:
   mapper-locations: classpath:mapping/**/*.xml
-  type-aliases-package: com.wwx.his.____.model
+  type-aliases-package: com.wwx.his.cd.model,com.wwx.his.admin.model,com.wwx.his.drug.model,com.wwx.his.pst.model
  
 #showSql
 logging:
