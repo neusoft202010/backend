@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.wwx.his.drug.mapper.IDrugMapper">
+
+	<resultMap id="DrugResultMap" type="Drug" >
+		<id property="drugid" column="DRUGID"/>
+		<result property="cost" column="COST"/>
+		<result property="name" column="NAME"/>
+		
+	</resultMap>
+ 
+	<insert id="insert" parameterType="Drug" keyProperty="no" keyColumn="DRUGID" useGeneratedKeys="true">
+	insert into oa_drug (COST,NAME) values (#{cost},#{name})
+ 	</insert>
+  
+ 	<update id="update">
+ 	update oa_drug set COST=#{cost},NAME=#{name}  where DRUGID=#{drugid}
+ 	</update>
+  
+	<delete id="delete">
+ 	delete from oa_drug  where DRUGID=#{drugid} 
+ 	</delete>
+  
+ 	<select id="selectByAll" resultMap="DrugResultMap">
+ 	select *  from oa_drug
+ 	</select>
+ 	
+ 	<select id="selectByAllWithPage" resultMap="DrugResultMap">
+ 	select *  from oa_drug limit #{start},#{rows}
+ 	</select>
+ 	
+ 	<select id="selectCountByAll" resultType="_int">
+ 	select count(*)  from oa_drug
+ 	</select>
+ 
+ 	<select id="selectByDrugid" resultMap="DrugResultMap">
+ 	select * from oa_drug where DRUGID=#{drugid}
+ 	</select>
+  
+</mapper>
