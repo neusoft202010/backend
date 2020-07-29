@@ -1,1 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.wwx.his.cd.mapper.IClinicMapper">
+
+	<resultMap id="ClinicResultMap" type="Clinic" >
+		<id property="cid" column="CID"/>
+		<result property="name" column="NAME"/>
+	</resultMap>
+ 
+	<insert id="insert" parameterType="Clinic" keyProperty="no"   keyColumn="CID"  useGeneratedKeys="true">
+	insert into oa_clinic (NAME) values (#{name})
+ 	</insert>
+  
+ 	<update id="update">
+ 	update oa_clinic set NAME=#{name} where CID=#{cid}
+ 	</update>
+  
+	<delete id="delete">
+ 	delete from oa_clinic where CID=#{cid} 
+ 	</delete>
+  
+ 	<select id="selectByAll"  resultMap="ClinicResultMap">
+ 	select *  from oa_clinic
+ 	</select>
+ 	
+ 	<select id="selectByAllWithPage" resultMap="ClinicResultMap">
+ 	select *  from oa_clinic limit #{start},#{rows}
+ 	</select>
+ 	
+ 	<select id="selectCountByAll" resultType="_int">
+ 	select count(*)  from oa_clinic
+ 	</select>
+ 
+ 	<select id="selectByDid"  resultMap="DoctorResultMap">
+ 	select * from oa_clinic where CID=#{cid}
+ 	</select>
+  
+</mapper>

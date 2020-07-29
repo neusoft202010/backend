@@ -1,1 +1,26 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.wwx.his.admin.mapper.IAdminMapper">
+
+	<resultMap id="AdminResultMap" type="Admin" >
+		<id property="id" column="ID"/>
+		<result property="name" column="NAME"/>
+		<result property="password" column="PASSWORD"/>
+		<result property="phone" column="PHONE"/>
+	</resultMap>
+ 
+	<insert id="insert" parameterType="Admin" keyProperty="no"   keyColumn="DID"  useGeneratedKeys="true">
+	insert into oa_admin (NAME,PASSWORD,PHONE) values (#{name},#{password},#{phone})
+ 	</insert>
+  
+ 	<update id="update">
+ 	update oa_admin set NAME=#{name},PASSWORD=#{password},PHONE=#{phone} where ID=#{id}
+ 	</update>
+   
+ 	<select id="selectById"  resultMap="AdminResultMap">
+ 	select * from oa_admin where ID=#{id}
+ 	</select>
+  
+</mapper>

@@ -12,5 +12,5 @@ public interface IAdminMapper {
 	//修改管理员
 	public void update(AdminModel am) throws Exception;
 	//通过ID取得管理员对象
-	public AdminModel getById(int id) throws Exception;
+	public AdminModel selectById(int id) throws Exception;
 }

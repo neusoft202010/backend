@@ -30,7 +30,7 @@ public class DoctorController {
 		ds.modify(dm);
 		Result<String> result=new Result<String>();
 		result.setStatus("OK");
-		result.setMessage("修改部门成功!");
+		result.setMessage("修改医生成功!");
 		return result;
 	}
 	@PostMapping(value="/delete")
@@ -38,7 +38,7 @@ public class DoctorController {
 		ds.delete(dm);
 		Result<String> result=new Result<String>();
 		result.setStatus("OK");
-		result.setMessage("删除部门成功!");
+		result.setMessage("删除医生成功!");
 		return result;
 	}
 	//取得部门列表，分页模式
@@ -52,7 +52,7 @@ public class DoctorController {
 		result.setList(ds.getListByAllWithPage(rows, page));
 		
 		result.setStatus("OK");
-		result.setMessage("取得部门列表分页方式成功!");
+		result.setMessage("取得医生列表分页方式成功!");
 		return result;
 	}
 	@GetMapping(value="/get")
@@ -61,7 +61,7 @@ public class DoctorController {
 		result.setResult(ds.getByDid(no));
 		
 		result.setStatus("OK");
-		result.setMessage("取得指定部门对象成功!");
+		result.setMessage("取得指定医生对象成功!");
 		return result;
 	}
 }
