@@ -1,6 +1,7 @@
 package com.wwx.his.cd.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.wwx.his.cd.model.ClinicModel;
 import com.wwx.his.cd.service.IClinicService;
 import com.wwx.his.result.Result;
-
+@CrossOrigin
 @RestController
 @RequestMapping(value="/clinic")
 public class ClinicController {

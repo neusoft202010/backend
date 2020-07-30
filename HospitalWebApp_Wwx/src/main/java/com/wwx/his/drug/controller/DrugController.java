@@ -1,6 +1,7 @@
 package com.wwx.his.drug.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,7 +13,7 @@ import com.wwx.his.drug.model.DrugModel;
 import com.wwx.his.drug.service.IDrugService;
 import com.wwx.his.restresult.Result;
 
-
+@CrossOrigin
 @RestController
 @RequestMapping(value="/drug")
 public class DrugController {
