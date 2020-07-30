@@ -11,16 +11,12 @@
 		<result property="phone" column="PHONE"/>
 	</resultMap>
  
-	<insert id="insert" parameterType="Admin" keyProperty="id"   keyColumn="DID"  useGeneratedKeys="true">
-	insert into oa_admin (NAME,PASSWORD,PHONE) values (#{name},#{password},#{phone})
- 	</insert>
-  
- 	<update id="update">
- 	update oa_admin set NAME=#{name},PASSWORD=#{password},PHONE=#{phone} where ID=#{id}
- 	</update>
+	<select id="validate" resultType="_int">
+	select count(*) from oa_admin where NAME=#{name} and password=#{password}
+ 	</select>
    
- 	<select id="selectById"  resultMap="AdminResultMap">
- 	select * from oa_admin where ID=#{id}
+ 	<select id="selectByName"  resultMap="AdminResultMap">
+ 	select * from oa_admin where NAME=#{name}
  	</select>
   
 </mapper>

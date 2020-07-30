@@ -5,10 +5,8 @@ import com.wwx.his.admin.model.AdminModel;
 
 //管理员业务接口
 public interface IAdminService {
-	//增加管理员
-	public int add(AdminModel am) throws Exception;
-	//修改管理员
-	public void modify(AdminModel am) throws Exception;
+	//验证管理员身份，返回管理员ID
+	public boolean validate(String name, String password) throws Exception;
 	//根据管理员医生的id（PK）取得指定的管理员对象
-	public AdminModel getById(int id) throws Exception;
+	public AdminModel getByName(String name) throws Exception;
 }

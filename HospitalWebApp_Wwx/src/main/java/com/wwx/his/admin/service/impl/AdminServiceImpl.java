@@ -13,20 +13,15 @@ import com.wwx.his.admin.service.IAdminService;
 public class AdminServiceImpl implements IAdminService {
 	@Autowired
 	private IAdminMapper adminMapper = null;
+	
 	@Override
-	public int add(AdminModel am) throws Exception {
-		adminMapper.insert(am);
-		return am.getId();
+	public AdminModel getByName(String name) throws Exception {
+		return adminMapper.selectByName(name);
 	}
 
 	@Override
-	public void modify(AdminModel am) throws Exception {
-		adminMapper.update(am);
-	}
-
-	@Override
-	public AdminModel getById(int id) throws Exception {
-		return adminMapper.selectById(id);
+	public boolean validate(String name, String password) throws Exception {
+		return adminMapper.validate(name, password) == 1;
 	}
 
 }

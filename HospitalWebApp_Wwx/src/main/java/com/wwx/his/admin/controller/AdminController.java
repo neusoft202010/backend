@@ -1,8 +1,11 @@
 package com.wwx.his.admin.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,26 +22,26 @@ public class AdminController {
 	@Autowired
 	private IAdminService as = null;
 	
-	@PostMapping(value="/add")
-	public Result<String> add(@RequestBody AdminModel am) throws Exception{
-		as.add(am);
-		Result<String> result=new Result<String>();
+	@GetMapping(value="/validate/{name}/{password}")
+	public Result<AdminModel> validate(@PathVariable(value="name") String name, @PathVariable(value="password") String password, HttpSession session) throws Exception{
+		Result<AdminModel> result = new Result<AdminModel>();
+		if(as.validate(name, password)){
+			result.setStringResult("Y");
+			result.setResult(as.getByName(name));
+			result.setMessage("管理员验证成功");
+			session.setAttribute("user", result.getResult());
+		}else {
+			result.setStringResult("N");
+			result.setMessage("管理员验证失败");
+		}
 		result.setStatus("OK");
-		result.setMessage("增加管理员成功!");
 		return result;
 	}
-	@PostMapping(value="/modify")
-	public Result<String> modify(@RequestBody AdminModel am) throws Exception{
-		as.modify(am);
-		Result<String> result=new Result<String>();
-		result.setStatus("OK");
-		result.setMessage("修改管理员成功!");
-		return result;
-	}
+	
 	@GetMapping(value="/get")
-	public Result<AdminModel> getById(@RequestParam(required=true) int id) throws Exception{
+	public Result<AdminModel> getByName(@RequestParam(required=true) String name) throws Exception{
 		Result<AdminModel> result=new Result<AdminModel>();
-		result.setResult(as.getById(id));
+		result.setResult(as.getByName(name));
 		result.setStatus("OK");
 		result.setMessage("取得指定管理员对象成功!");
 		return result;
