@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,7 +20,7 @@ public class DoctorController {
 	private IDoctorService ds = null;
 	
 	@PostMapping(value="/add")
-	public Result<String> add(DoctorModel dm) throws Exception{
+	public Result<String> add(@RequestBody DoctorModel dm) throws Exception{
 		ds.add(dm);
 		Result<String> result=new Result<String>();
 		result.setStatus("OK");
@@ -27,7 +28,7 @@ public class DoctorController {
 		return result;
 	}
 	@PostMapping(value="/modify")
-	public Result<String> modify(DoctorModel dm) throws Exception{
+	public Result<String> modify(@RequestBody DoctorModel dm) throws Exception{
 		ds.modify(dm);
 		Result<String> result=new Result<String>();
 		result.setStatus("OK");
@@ -35,7 +36,7 @@ public class DoctorController {
 		return result;
 	}
 	@PostMapping(value="/delete")
-	public Result<String> delete(DoctorModel dm) throws Exception{
+	public Result<String> delete(@RequestBody DoctorModel dm) throws Exception{
 		ds.delete(dm);
 		Result<String> result=new Result<String>();
 		result.setStatus("OK");
@@ -57,9 +58,9 @@ public class DoctorController {
 		return result;
 	}
 	@GetMapping(value="/get")
-	public Result<DoctorModel> getByDid(@RequestParam(required=true) int Did) throws Exception{
+	public Result<DoctorModel> getByDid(@RequestParam(required=true) int did) throws Exception{
 		Result<DoctorModel> result=new Result<DoctorModel>();
-		result.setResult(ds.getByDid(Did));
+		result.setResult(ds.getByDid(did));
 		
 		result.setStatus("OK");
 		result.setMessage("取得指定医生对象成功!");

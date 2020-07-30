@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,7 +23,7 @@ import com.wwx.his.restresult.Result;
 		@Autowired
 		private IIndrugService is=null;
 		@PostMapping(value="/add")
-		public Result<String> add(IndrugModel im) throws Exception{
+		public Result<String> add(@RequestBody IndrugModel im) throws Exception{
 			is.add(im);
 			Result<String> result=new Result<String>();
 			result.setStatus("OK");
@@ -31,7 +32,7 @@ import com.wwx.his.restresult.Result;
 			
 		}
 		@PostMapping(value="/modify")
-		public Result<String> modify(IndrugModel im) throws Exception{
+		public Result<String> modify(@RequestBody IndrugModel im) throws Exception{
 			is.modify(im);
 			Result<String> result=new Result<String>();
 			result.setStatus("OK");
@@ -39,7 +40,7 @@ import com.wwx.his.restresult.Result;
 			return result;
 		}
 		@PostMapping(value="/delete")
-		public Result<String> delete(IndrugModel im) throws Exception{
+		public Result<String> delete(@RequestBody IndrugModel im) throws Exception{
 			is.delete(im);
 			Result<String> result=new Result<String>();
 			result.setStatus("OK");

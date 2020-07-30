@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,7 +22,7 @@ public class DrugController {
 	@Autowired
 	private IDrugService ds=null;
 	@PostMapping(value="/add")
-	public Result<String> add(DrugModel dm) throws Exception{
+	public Result<String> add(@RequestBody DrugModel dm) throws Exception{
 		ds.add(dm);
 		Result<String> result=new Result<String>();
 		result.setStatus("OK");
@@ -30,7 +31,7 @@ public class DrugController {
 		
 	}
 	@PostMapping(value="/modify")
-	public Result<String> modify(DrugModel dm) throws Exception{
+	public Result<String> modify(@RequestBody DrugModel dm) throws Exception{
 		ds.modify(dm);
 		Result<String> result=new Result<String>();
 		result.setStatus("OK");
@@ -38,7 +39,7 @@ public class DrugController {
 		return result;
 	}
 	@PostMapping(value="/delete")
-	public Result<String> delete(DrugModel dm) throws Exception{
+	public Result<String> delete(@RequestBody DrugModel dm) throws Exception{
 		ds.delete(dm);
 		Result<String> result=new Result<String>();
 		result.setStatus("OK");
