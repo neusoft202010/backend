@@ -67,7 +67,7 @@ public class TariffServiceImpl implements ITariffService {
 	@Override
 	public TariffModel getByNum(int num) throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		return tariffMapper.selectByNum(num);
 	}
 
 }
