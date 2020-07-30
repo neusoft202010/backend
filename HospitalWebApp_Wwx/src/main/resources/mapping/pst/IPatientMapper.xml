@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wwx.his.pst.mapper.IPatientMapper">
+
+  <resultMap id="PatientResultMap" type="Patient">
+  	<id property="pid" column="PID"/>
+  	<result property="sid" column="SID"/>
+  	<result property="name" column="NAME"/>
+  	<result property="sex" column="SEX"/>
+  	<result property="age" column="AGE"/>
+  	<result property="phone" column="PHONE"/>
+  	
+  </resultMap>
+  
+  <resultMap id="PatientWithSickroomResultMap" type="Patient" extends="PatientResultMap">
+  	<association property="sickroom" resultMap="com.wwx.his.pst.mapper.ISickroomMapper.SickroomResultMap"/>
+  </resultMap>
+  
+  <resultMap id="PatientWithTariffsResultMap" type="Patient" extends="PatientResultMap">
+  	<collection property="tariffs" resultMap="com.wwx.his.pst.mapper.ITariffMapper.TariffResultMap"/>
+  </resultMap>
+  
+  <insert id="insert" keyProperty="pid" keyColumn="PID" useGeneratedKeys="true">
+  insert into oa_patient (SID, NAME, SEX, AGE, PHONE) 
+  values (#{sid}, #{name}, #{sex}, #{age}, #{phone})
+  </insert>
+
+  <update id="update">
+  update oa_patient set NAME = #{name}, PHONE = #{phone} where PID = #{pid}
+  </update>
+
+  <delete id="delete">
+  delete from oa_patient where PID = #{pid}
+  </delete>
+  
+  <select id="selectByNum"  resultMap="PatientResultMap">
+  select * from oa_patient where PID = #{pid}
+  </select>
+
+  <select id="selectByAll" resultMap="PatientResultMap">
+  select * from oa_patient
+  </select>
+  
+  <select id="selectByAllWithPage" resultMap="PatientResultMap">
+  select * from oa_patient limit #{start}, #{rows}
+  </select>
+  
+  <select id="selectCountByAll" resultType="_int">
+  select count(*) from oa_department
+  </select>
+  
+  <select id="selectAllWithSickroom" resultMap="PatientWithSickroomResultMap">
+  select a.*, b.* from oa_patient a, oa_sickroom b where a.SID = b.SID
+  </select>
+  
+  <select id="selectAllWithTariffs" resultMap="PatientWithTariffsResultMap">
+  select a.*, b.* from oa_patient a, oa_tariff b where a.PID = b.PID
+  </select>
+  
+</mapper>
