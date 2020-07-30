@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wwx.his.pst.mapper.ITariffMapper">
+
+  <resultMap id="TariffResultMap" type="Tariff">
+  	<id property="tid" column="TID"/>
+  	<result property="pid" column="PID"/>
+  	<result property="pname" column="PNAME"/>
+  	<result property="cost" column="COST"/>
+  
+  </resultMap>
+  
+  <insert id="insert" keyProperty="tid" keyColumn="TID" useGeneratedKeys="true">
+  insert into oa_tariff (PID, PNAME, COST) values (#{pid}, #{pname}, #{cost})
+  </insert>
+
+  <update id="update">
+  update oa_tariff set COST = #{cost} where TID = #{tid}
+  </update>
+
+  <delete id="delete">
+  delete from oa_tariff where TID = #{tid}
+  </delete>
+  
+  <select id="selectByNum"  resultMap="TariffResultMap">
+  select * from oa_tariff where TID = #{tid}
+  </select>
+
+  <select id="selectByAll" resultMap="TariffResultMap">
+  select * from oa_tariff
+  </select>
+  
+  <select id="selectByAllWithPage" resultMap="TariffResultMap">
+  select * from oa_tariff limit #{start}, #{rows}
+  </select>
+  
+  <select id="selectCountByAll" resultType="_int">
+  select count(*) from oa_tariff
+  </select>
+  
+  
+  
+</mapper>

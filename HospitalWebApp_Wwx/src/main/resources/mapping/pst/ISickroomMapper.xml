@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wwx.his.pst.mapper.ISickroomMapper">
+
+  <resultMap id="SickroomResultMap" type="Sickroom">
+  	<id property="sid" column="SID"/>
+  	<result property="max" column="MAXCOUNT"/>
+ 
+  </resultMap>
+  
+  
+  <resultMap id="SickroomWithPatientsResultMap" type="Sickroom" extends="SickroomResultMap">
+  	<collection property="patients" resultMap="com.wwx.his.pst.mapper.IPatientMapper.PatientResultMap"/>
+  </resultMap>
+  
+  
+  <insert id="insert" keyProperty="sid" keyColumn="SID" useGeneratedKeys="true">
+  insert into oa_sickroom (SID, MAXCOUNT) values (#{sid}, #{max})
+  </insert>
+
+  <update id="update">
+  update oa_sickroom set MAXCOUNT = #{max} where SID = #{sid}
+  </update>
+
+  <delete id="delete">
+  delete from oa_sickroom where SID = #{sid}
+  </delete>
+  
+  <select id="selectByNum"  resultMap="SickroomResultMap">
+  select * from oa_sickroom where SID = #{sid}
+  </select>
+
+  <select id="selectByAll" resultMap="SickroomResultMap">
+  select * from oa_sickroom
+  </select>
+  
+  <select id="selectByAllWithPage" resultMap="SickroomResultMap">
+  select * from oa_sickroom limit #{start}, #{rows}
+  </select>
+  
+  <select id="selectCountByAll" resultType="_int">
+  select count(*) from oa_sickroom
+  </select>
+  
+  <select id="selectAllWithPatients" resultMap="SickroomWithPatientsResultMap">
+  select a.*, b.* from oa_patient a, oa_sickroom b where a.SID = b.SID
+  </select>
+  
+</mapper>
