@@ -69,9 +69,9 @@ public class DrugServiceImpl implements IDrugService{
 	}
 
 	@Override
-	public DrugModel getByDrugid(int no) throws Exception {
+	public DrugModel getByDrugid(int drugid) throws Exception {
 		
-		return drugMapper.selectByDrugid(no);
+		return drugMapper.selectByDrugid(drugid);
 	}
 	
 	

@@ -23,7 +23,7 @@ public interface IMedicalrecordService {
 			public int getPageCountByAll(int rows) throws Exception;
 			
 			//根据病例的pid和did（PK）取得指定的部门对象
-			public MedicalrecordModel getByPDid(int pidno ,int didno) throws Exception;
+			public MedicalrecordModel getByPid(int pid) throws Exception;
 	
 	
 	

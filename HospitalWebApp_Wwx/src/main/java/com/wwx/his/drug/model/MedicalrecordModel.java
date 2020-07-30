@@ -5,7 +5,7 @@ import org.apache.ibatis.type.Alias;
 
 //病例model类
 @Alias("Medicalrecord")
-public class MedicalrecordModel {
+public class MedicalrecordModel implements Serializable{
 
 	private int pid = 0;
 	private int did = 0;

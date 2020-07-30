@@ -22,7 +22,7 @@ public class IndrugServiceImpl implements IIndrugService{
 	@Override
 	public int add(IndrugModel im) throws Exception {
 		indrugMapper.insert(im);
-		return im.getDrugid();
+		return im.getId();
 	}
 
 	@Override
@@ -69,9 +69,9 @@ public class IndrugServiceImpl implements IIndrugService{
 	}
 
 	@Override
-	public IndrugModel getById(int no) throws Exception {
+	public IndrugModel getById(int id) throws Exception {
 		
-		return indrugMapper.selectById(no);
+		return indrugMapper.selectById(id);
 	}
 
 }

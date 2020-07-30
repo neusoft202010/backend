@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wwx.his.drug.mapper.IIndrugMapper">
+
+	<resultMap id="IndrugResultMap" type="Indrug" >
+		<id property="id" column="ID"/>
+		<result property="drugid" column="DRUGID"/>
+		<result property="date" column="DATE"/>
+		<result property="quantity" column="QUANTITY"/>
+	</resultMap>
+ 
+	<insert id="insert" parameterType="Indrug" keyProperty="id" keyColumn="ID" useGeneratedKeys="true">
+	insert into oa_indrug (DRUGID,DATE,QUANTITY) values (#{drugid},#{date},#{quantity})
+ 	</insert>
+  
+ 	<update id="update">
+ 	update  oa_indrug set DRUGID=#{drugid},DATE=#{date},QUANTITY=#{quantity} where ID=#{id}
+ 	</update>
+  
+	<delete id="delete">
+ 	delete from oa_indrug  where ID=#{id} 
+ 	</delete>
+  
+ 	<select id="selectByAll" resultMap="IndrugResultMap">
+ 	select *  from oa_indrug
+ 	</select>
+ 	
+ 	<select id="selectByAllWithPage" resultMap="IndrugResultMap">
+ 	select *  from oa_indrug limit #{start},#{rows}
+ 	</select>
+ 	
+ 	<select id="selectCountByAll" resultType="_int">
+ 	select count(*)  from oa_indrug
+ 	</select>
+ 
+ 	<select id="selectById" resultMap="IndrugResultMap">
+ 	select * from oa_indrug where ID=#{id}
+ 	</select>
+  
+</mapper>

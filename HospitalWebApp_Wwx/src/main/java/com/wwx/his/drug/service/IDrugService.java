@@ -25,7 +25,7 @@ public interface IDrugService {
 		public int getPageCountByAll(int rows) throws Exception;
 		
 		//根据药物的drugid（PK）取得指定的部门对象
-		public DrugModel getByDrugid(int drugidno) throws Exception;
+		public DrugModel getByDrugid(int drugid) throws Exception;
 		
 			
 	

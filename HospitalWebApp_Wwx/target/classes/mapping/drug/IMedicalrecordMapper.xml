@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wwx.his.drug.mapper.IMedicalrecordMapper">
+
+	<resultMap id="MedicalrecordResultMap" type="Medicalrecord" >
+		<id property="pid" column="PID"/>
+		<result property="did" column="DID"/>
+		<result property="drugid" column="DRUGID"/>
+	</resultMap>
+ 
+	<insert id="insert" parameterType="Medicalrecord" keyProperty="pid" keyColumn="PID" useGeneratedKeys="true">
+	insert into oa_medicalrecord (DID,DRUGID) values (#{did},#{drugid})
+ 	</insert>
+  
+ 	<update id="update">
+ 	update  oa_medicalrecord set DID=#{did},DRUGID=#{drugid} where PID=#{pid}
+ 	</update>
+  
+	<delete id="delete">
+ 	delete from oa_medicalrecord  where DID=#{did} 
+ 	</delete>
+  
+ 	<select id="selectByAll" resultMap="MedicalrecordResultMap">
+ 	select *  from oa_medicalrecord
+ 	</select>
+ 	
+ 	<select id="selectByAllWithPage" resultMap="MedicalrecordResultMap">
+ 	select *  from oa_medicalrecord limit #{start},#{rows}
+ 	</select>
+ 	
+ 	<select id="selectCountByAll" resultType="_int">
+ 	select count(*)  from oa_medicalrecord
+ 	</select>
+ 
+ 	<select id="selectByPid" resultMap="MedicalrecordResultMap">
+ 	select * from oa_medicalrecord where PID=#{pid}
+ 	</select>
+  
+</mapper>

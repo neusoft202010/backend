@@ -57,9 +57,9 @@ public class MedicalrecordController {
 		return result;
 	}
 	@GetMapping(value="/get")
-	public Result<MedicalrecordModel> getByNo(@RequestParam(required=true) int no,int nh) throws Exception{
+	public Result<MedicalrecordModel> getByNo(@RequestParam(required=true) int pid) throws Exception{
 		Result<MedicalrecordModel> result=new Result<MedicalrecordModel>();
-		result.setResult(ms.getByPDid(no,nh));
+		result.setResult(ms.getByPid(pid));
 		
 		result.setStatus("OK");
 		result.setMessage("取得指定病例对象成功!");

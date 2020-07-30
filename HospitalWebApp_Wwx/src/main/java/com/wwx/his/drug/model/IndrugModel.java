@@ -26,7 +26,7 @@ public class IndrugModel implements Serializable{
 	public int getDrugid() {
 		return drugid;
 	}
-	public void setDid(int drugid) {
+	public void setDrugid(int drugid) {
 		this.drugid = drugid;
 	}
 	
@@ -39,7 +39,7 @@ public class IndrugModel implements Serializable{
 	}
 
 	
-	public int Quantity() {
+	public int getQuantity() {
 		return quantity;
 	}
 	public void setQuantity(int quantity) {
