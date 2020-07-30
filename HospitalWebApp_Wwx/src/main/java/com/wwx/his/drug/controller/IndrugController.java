@@ -14,9 +14,9 @@ import com.wwx.his.restresult.Result;
 
 
 	
-	@RestController
-	@RequestMapping(value="/indrug")
-  public class IndrugController {
+@RestController
+@RequestMapping(value="/indrug")
+ public class IndrugController {
 		
 		@Autowired
 		private IIndrugService is=null;
@@ -59,10 +59,11 @@ import com.wwx.his.restresult.Result;
 			result.setMessage("取得进药记录列表分页方式成功!");
 			return result;
 		}
+		//@PostMapping(value="/get")
 		@GetMapping(value="/get")
-		public Result<IndrugModel> getByNo(@RequestParam(required=true) int no) throws Exception{
+		public Result<IndrugModel> getByNo(@RequestParam(required=true) int id) throws Exception{
 			Result<IndrugModel> result=new Result<IndrugModel>();
-			result.setResult(is.getById(no));
+			result.setResult(is.getById(id));
 			
 			result.setStatus("OK");
 			result.setMessage("取得指定进药记录对象成功!");

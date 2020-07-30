@@ -25,7 +25,7 @@ public interface IDrugMapper {
 			//取得药物的个数
 			public int selectCountByAll() throws Exception;
 			//根据药物的drugid（PK）取得指定的药物对象
-			public DrugModel selectByDrugid(int drugidno) throws Exception;
+			public DrugModel selectByDrugid(int drugid) throws Exception;
 	
 
 }

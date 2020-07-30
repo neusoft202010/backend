@@ -59,9 +59,9 @@ public class DrugController {
 		return result;
 	}
 	@GetMapping(value="/get")
-	public Result<DrugModel> getByNo(@RequestParam(required=true) int no) throws Exception{
+	public Result<DrugModel> getByDrugid(@RequestParam(required=true) int drugid) throws Exception{
 		Result<DrugModel> result=new Result<DrugModel>();
-		result.setResult(ds.getByDrugid(no));
+		result.setResult(ds.getByDrugid(drugid));
 		
 		result.setStatus("OK");
 		result.setMessage("取得指定药物对象成功!");

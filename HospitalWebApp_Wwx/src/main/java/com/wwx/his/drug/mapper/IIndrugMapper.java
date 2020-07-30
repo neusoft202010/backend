@@ -26,7 +26,7 @@ public interface IIndrugMapper {
 	//取得进药记录的个数
 	public int selectCountByAll() throws Exception;
 	//根据进药记录的id（PK）取得指定的药物对象
-	public IndrugModel selectById(int idno) throws Exception;
+	public IndrugModel selectById(int id) throws Exception;
 	
 
 }

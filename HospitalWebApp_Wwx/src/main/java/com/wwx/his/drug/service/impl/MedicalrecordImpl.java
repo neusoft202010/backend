@@ -15,39 +15,39 @@ import com.wwx.his.drug.service.IMedicalrecordService;
 public class MedicalrecordImpl implements IMedicalrecordService{
 	
 	@Autowired
-	private IMedicalrecordMapper medicalrecorderMapper=null;
+	private IMedicalrecordMapper medicalrecordMapper=null;
 	@Override
 	public int add(MedicalrecordModel mm) throws Exception {
-		medicalrecorderMapper.insert(mm);
+		medicalrecordMapper.insert(mm);
 		return mm.getPid();
 	}
 
 	@Override
 	public void modify(MedicalrecordModel mm) throws Exception {
-		medicalrecorderMapper.update(mm);
+		medicalrecordMapper.update(mm);
 	}
 
 	@Override
 	public void delete(MedicalrecordModel mm) throws Exception {
-		medicalrecorderMapper.delete(mm);
+		medicalrecordMapper.delete(mm);
 	}
 
 	@Override
 	public List<MedicalrecordModel> getListByAll() throws Exception {
 		
-		return medicalrecorderMapper.selectByAll();
+		return medicalrecordMapper.selectByAll();
 	}
 
 	@Override
 	public List<MedicalrecordModel> getListByAllWithPage(int rows, int page) throws Exception {
 		
-		return medicalrecorderMapper.selectByAllWithPage(rows*(page-1), rows);
+		return medicalrecordMapper.selectByAllWithPage(rows*(page-1), rows);
 	}
 
 	@Override
 	public int getCountByAll() throws Exception {
 		
-		return medicalrecorderMapper.selectCountByAll();
+		return medicalrecordMapper.selectCountByAll();
 	}
 
 	@Override
@@ -66,9 +66,9 @@ public class MedicalrecordImpl implements IMedicalrecordService{
 	}
 
 	@Override
-	public MedicalrecordModel getByPDid(int no,int nh) throws Exception {
+	public MedicalrecordModel getByPid(int pid) throws Exception {
 		
-		return medicalrecorderMapper.selectByPDid(no,nh);
+		return medicalrecordMapper.selectByPid(pid);
 	}
 
 }

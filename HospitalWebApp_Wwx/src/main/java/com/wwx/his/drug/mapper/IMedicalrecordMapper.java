@@ -26,6 +26,6 @@ public interface IMedicalrecordMapper {
 	//取得病例的个数
 	public int selectCountByAll() throws Exception;
 	//根据药物的did和pid（PK）取得指定的药物对象
-	public MedicalrecordModel selectByPDid(int pidno,int didno) throws Exception;
+	public MedicalrecordModel selectByPid(int pid) throws Exception;
 
 }

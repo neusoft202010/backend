@@ -8,8 +8,6 @@
 		<version>2.3.2.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	
-	
 	<groupId>com.wwx</groupId>
 	<artifactId>HospitalWebApp_Wwx</artifactId>
 	<version>1.0</version>
